@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">NGHBRHood</string>
+    <string name="welcome">Welcome to</string>
+    <string name="loginBtn">LOGIN</string>
+    <string name="registerBtn">REGISTER</string>
+    <string name="forgotYour"><a href="http://ctis.bilkent.edu.tr/"><u>Forgot Your Password?</u></a></string>
+    <string name="cancel"><u>Cancel</u></string>
+    <string name="chatBtn">Chat</string>
+    <string name="listShopsBtn">Lıst Shops</string>
+    <string name="billsBtn">Bılls</string>
+    <string name="changePassword">Change Password</string>
+    <string name="datetime">Date_Time</string>
+    <string name="newsPortalBtn">News Portal</string>
+
+    <string-array name="registerSpin">
+        <item>Resident</item>
+        <item>Apartment Manager</item>
+    </string-array>
+</resources>
