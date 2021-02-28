@@ -3,6 +3,7 @@ package com.senior.nghbrhood;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
@@ -53,6 +54,10 @@ public class MainPage extends AppCompatActivity implements androidx.appcompat.wi
                 startActivity(intent);
                 return true;
             case R.id.logout:
+                SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("remember", "false");
+                editor.apply();
                 Intent intent1 = new Intent(this, MainActivity.class);
                 startActivity(intent1);
                 return true;

@@ -3,6 +3,7 @@ package com.senior.nghbrhood;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,6 +11,8 @@ import android.os.Looper;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +22,9 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 public class Login extends AppCompatActivity {
 
     String username, password;
+    EditText CheckUsername, CheckPassword;
+    CheckBox rememberCheck;
+    Button login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,36 @@ public class Login extends AppCompatActivity {
 
         //hide the title bar
         getSupportActionBar().hide();
+
+        CheckUsername = findViewById(R.id.userNamePt);
+        CheckPassword = findViewById(R.id.passwordPt);
+        rememberCheck = findViewById(R.id.rememberBox);
+        login = findViewById(R.id.loginBtn2);
+
+        SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+        String checkbox = preferences.getString("remember", "");
+        if(checkbox.equals("true")){
+            Intent intent = new Intent(Login.this, MainPage.class);
+            startActivity(intent);
+        }
+
+        rememberCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(compoundButton.isChecked()){
+                    SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("remember", "true");
+                    editor.apply();
+                }
+                else if(!compoundButton.isChecked()){
+                    SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("remember", "false");
+                    editor.apply();
+                }
+            }
+        });
     }
 
     public void onClick(View v) {
