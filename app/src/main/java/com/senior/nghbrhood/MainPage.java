@@ -66,7 +66,7 @@ public class MainPage extends AppCompatActivity implements androidx.appcompat.wi
                 startActivity(intent1);
                 return true;
             case R.id.addbills:
-                Intent intent2 = new Intent(this, ChangePassword.class);
+                Intent intent2 = new Intent(this, addbill.class);
                 startActivity(intent2);
                 return true;
             /*case R.id.showbills:
