@@ -28,6 +28,7 @@
         android:layout_height="68dp"
         android:layout_marginStart="60dp"
         android:layout_marginEnd="15dp"
+        android:onClick="browser1"
         android:layout_marginBottom="18dp"
         android:background="@drawable/custom_input"
         android:drawableTop="@drawable/ic_chat"

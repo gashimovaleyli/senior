@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -96,5 +97,10 @@ public class MainPage extends AppCompatActivity implements androidx.appcompat.wi
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    public void browser1(View view) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://94.103.47.43:3000/home"));
+        startActivity(browserIntent);
     }
 }
