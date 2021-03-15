@@ -94,7 +94,7 @@ public class ChangePassword extends AppCompatActivity {
                 }
                 break;
             case R.id.cancelTv3:
-                Intent intent2 = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent2 = new Intent(getApplicationContext(), MainPage.class);
                 startActivity(intent2);
                 finish();
                 break;

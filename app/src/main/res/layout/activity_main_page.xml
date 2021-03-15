@@ -28,10 +28,10 @@
         android:layout_height="68dp"
         android:layout_marginStart="60dp"
         android:layout_marginEnd="15dp"
-        android:onClick="browser1"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/custom_input"
         android:drawableTop="@drawable/ic_chat"
+        android:onClick="onClick"
         android:text="@string/chatBtn"
         app:layout_constraintBottom_toTopOf="@+id/billsBtn"
         app:layout_constraintEnd_toStartOf="@+id/listShopsBtn"
@@ -42,43 +42,29 @@
         android:layout_width="139dp"
         android:layout_height="68dp"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="58dp"
-        android:layout_marginBottom="18dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/custom_input"
+        android:onClick="onClick"
         android:drawableTop="@drawable/ic_listshops"
         android:text="@string/listShopsBtn"
-        app:layout_constraintBottom_toTopOf="@+id/newsPortalBtn"
+        app:layout_constraintBottom_toTopOf="@+id/billsBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/chatBtn" />
+
 
     <Button
         android:id="@+id/billsBtn"
         android:layout_width="139dp"
         android:layout_height="68dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginEnd="15dp"
         android:layout_marginBottom="124dp"
         android:background="@drawable/custom_input"
         android:drawableTop="@drawable/ic_bills"
         android:onClick="showPopup2"
         android:text="@string/billsBtn"
         app:layout_constraintBottom_toTopOf="@+id/dataTime"
-        app:layout_constraintEnd_toStartOf="@+id/newsPortalBtn"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/newsPortalBtn"
-        android:layout_width="139dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="58dp"
-        android:layout_marginBottom="124dp"
-        android:background="@drawable/custom_input"
-        android:drawableTop="@drawable/ic_news"
-        android:text="@string/newsPortalBtn"
-        app:layout_constraintBottom_toTopOf="@+id/dataTime"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/billsBtn" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/dataTime"

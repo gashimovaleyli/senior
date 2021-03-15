@@ -16,7 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NGHBRHood"
         android:usesCleartextTraffic="true">
-        <activity android:name=".addbill"></activity>
+        <activity android:name=".chat"></activity>
+        <activity android:name=".ListShops" />
+        <activity android:name=".addbill" />
         <activity android:name=".ChangePassword" />
         <activity android:name=".MainPage" />
         <activity android:name=".Register" />

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
@@ -88,6 +89,10 @@ public class Register extends AppCompatActivity {
                             if (putData.onComplete()) {
                                 String result = putData.getResult();
                                 if (result.equals("Sign Up Success")) {
+                                    SharedPreferences preferences2 = getSharedPreferences("checkbox", MODE_PRIVATE);
+                                    SharedPreferences.Editor editor2 = preferences2.edit();
+                                    editor2.putString("remember", "false");
+                                    editor2.apply();
                                     Toast.makeText(getApplicationContext(), "You are Successfully Signed", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(intent);
