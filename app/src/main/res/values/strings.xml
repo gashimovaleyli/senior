@@ -6,7 +6,7 @@
     <string name="forgotYour"><a href="http://ctis.bilkent.edu.tr/"><u>Forgot Your Password?</u></a></string>
     <string name="cancel"><u>Cancel</u></string>
     <string name="chatBtn">Chat</string>
-    <string name="listShopsBtn">Lıst Shops</string>
+    <string name="listShopsBtn">Shops</string>
     <string name="billsBtn">Bılls</string>
     <string name="changePassword">Change Password</string>
     <string name="datetime">Date_Time</string>

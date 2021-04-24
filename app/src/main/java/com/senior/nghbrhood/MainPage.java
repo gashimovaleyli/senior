@@ -53,6 +53,11 @@ public class MainPage extends AppCompatActivity implements androidx.appcompat.wi
             case R.id.chatBtn:
                 Intent intent2 = new Intent(getApplicationContext(), chat.class);
                 startActivity(intent2);
+                break;
+            case R.id.billsBtn:
+                Intent intent3 = new Intent(getApplicationContext(), bills.class);
+                startActivity(intent3);
+                break;
         }
     }
 
@@ -82,10 +87,10 @@ public class MainPage extends AppCompatActivity implements androidx.appcompat.wi
                 Intent intent1 = new Intent(this, MainActivity.class);
                 startActivity(intent1);
                 return true;
-            case R.id.addbills:
+            /*case R.id.addbills:
                 Intent intent2 = new Intent(this, addbill.class);
                 startActivity(intent2);
-                return true;
+                return true;*/
             /*case R.id.showbills:
                 Intent intent3 = new Intent(this, MainActivity.class);
                 startActivity(intent3);
@@ -95,12 +100,7 @@ public class MainPage extends AppCompatActivity implements androidx.appcompat.wi
         }
     }
 
-    public void showPopup2(View v) {
-        PopupMenu popup = new PopupMenu(this, v);
-        popup.setOnMenuItemClickListener(this);
-        popup.inflate(R.menu.bill_popup);
-        popup.show();
-    }
+
 
     public boolean onMenuItemClick2(MenuItem item) {
         switch (item.getItemId()) {
