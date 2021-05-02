@@ -54,10 +54,10 @@ public class MainPage extends AppCompatActivity implements androidx.appcompat.wi
                 Intent intent2 = new Intent(getApplicationContext(), chat.class);
                 startActivity(intent2);
                 break;
-            case R.id.billsBtn:
+            /*case R.id.billsBtn:
                 Intent intent3 = new Intent(getApplicationContext(), bills.class);
                 startActivity(intent3);
-                break;
+                break;*/
         }
     }
 
@@ -65,6 +65,13 @@ public class MainPage extends AppCompatActivity implements androidx.appcompat.wi
         PopupMenu popup = new PopupMenu(this, v);
         popup.setOnMenuItemClickListener(this);
         popup.inflate(R.menu.popup_menu);
+        popup.show();
+    }
+
+    public void showPopupBills(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.setOnMenuItemClickListener(this);
+        popup.inflate(R.menu.bill_popup);
         popup.show();
     }
 
@@ -87,20 +94,18 @@ public class MainPage extends AppCompatActivity implements androidx.appcompat.wi
                 Intent intent1 = new Intent(this, MainActivity.class);
                 startActivity(intent1);
                 return true;
-            /*case R.id.addbills:
+            case R.id.addbills:
                 Intent intent2 = new Intent(this, addbill.class);
                 startActivity(intent2);
-                return true;*/
-            /*case R.id.showbills:
-                Intent intent3 = new Intent(this, MainActivity.class);
+                return true;
+            case R.id.showbills:
+                Intent intent3 = new Intent(getApplicationContext(), bills.class);
                 startActivity(intent3);
-                return true;*/
+                return true;
             default:
                 return false;
         }
     }
-
-
 
     public boolean onMenuItemClick2(MenuItem item) {
         switch (item.getItemId()) {

@@ -60,7 +60,7 @@
         android:layout_marginBottom="124dp"
         android:background="@drawable/custom_input"
         android:drawableTop="@drawable/ic_bills"
-        android:onClick="onClick"
+        android:onClick="showPopupBills"
         android:text="@string/billsBtn"
         app:layout_constraintBottom_toTopOf="@+id/dataTime"
         app:layout_constraintEnd_toEndOf="parent"

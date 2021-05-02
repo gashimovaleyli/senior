@@ -2,65 +2,90 @@ package com.senior.nghbrhood;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
+import android.widget.Toast;
+
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import java.util.Calendar;
 
-public class addbill extends AppCompatActivity {
+public class addbill extends AppCompatActivity implements View.OnClickListener{
 
-    private EditText dater;
-    DatePickerDialog datePickerDialog;
+    private int notificationId = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addbill);
 
-        //hiding status bar
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        // Locking the orientation to Portrait
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        //hide the title bar
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
-        dater = findViewById(R.id.datePt);
-
-        dater.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
-                datePickerDialog = new DatePickerDialog(addbill.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int day, int month, int year) {
-                        String holder = year + "-" + (month + 1) + "-" + day;
-                        dater.setText(holder);
-                    }
-                }, year, month, day);
-                datePickerDialog.show();
-            }
-        });
+        findViewById(R.id.setBtn).setOnClickListener(this);
+        findViewById(R.id.cancelBtn).setOnClickListener(this);
     }
 
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.cancelTv4:
-                Intent intent2 = new Intent(getApplicationContext(), MainPage.class);
-                startActivity(intent2);
-                finish();
+    @Override
+    public void onClick(View view) {
+        EditText editText = findViewById(R.id.editText);
+        TimePicker timePicker = findViewById(R.id.timePicker);
+
+        // Intent
+        Intent intent = new Intent(addbill.this, AlarmReceiver.class);
+        intent.putExtra("notificationId", notificationId);
+        intent.putExtra("message", editText.getText().toString());
+
+        // PendingIntent
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                addbill.this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT
+        );
+
+        // AlarmManager
+        AlarmManager alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
+
+        switch (view.getId()) {
+            case R.id.setBtn:
+                int hour = timePicker.getCurrentHour();
+                int minute = timePicker.getCurrentMinute();
+
+                // Create time.
+                Calendar startTime = Calendar.getInstance();
+                startTime.set(Calendar.HOUR_OF_DAY, hour);
+                startTime.set(Calendar.MINUTE, minute);
+                startTime.set(Calendar.SECOND, 0);
+                long alarmStartTime = startTime.getTimeInMillis();
+
+                // Set Alarm
+                alarmManager.set(AlarmManager.RTC_WAKEUP, alarmStartTime, pendingIntent);
+                Toast.makeText(this, "Done!", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.cancelBtn:
+                alarmManager.cancel(pendingIntent);
+                Toast.makeText(this, "Canceled.", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
