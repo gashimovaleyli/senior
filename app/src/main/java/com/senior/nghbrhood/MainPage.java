@@ -24,7 +24,7 @@ public class MainPage extends AppCompatActivity implements androidx.appcompat.wi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
-        TextView dateTime = (TextView) findViewById(R.id.dataTime);
+        //TextView dateTime = (TextView) findViewById(R.id.dataTime);
 
         //hiding status bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -35,7 +35,7 @@ public class MainPage extends AppCompatActivity implements androidx.appcompat.wi
         //hide the title bar
         getSupportActionBar().hide();
 
-        dateTime.setText(String.valueOf(java.util.Calendar.getInstance().getTime()));
+        //dateTime.setText(String.valueOf(java.util.Calendar.getInstance().getTime()));
 
 
     }

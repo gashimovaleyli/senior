@@ -57,24 +57,11 @@
         android:id="@+id/billsBtn"
         android:layout_width="139dp"
         android:layout_height="68dp"
-        android:layout_marginBottom="124dp"
+        android:layout_marginBottom="176dp"
         android:background="@drawable/custom_input"
         android:drawableTop="@drawable/ic_bills"
         android:onClick="showPopupBills"
         android:text="@string/billsBtn"
-        app:layout_constraintBottom_toTopOf="@+id/dataTime"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/dataTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginEnd="176dp"
-        android:layout_marginBottom="37dp"
-        android:text="@string/datetime"
-        android:textSize="11dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

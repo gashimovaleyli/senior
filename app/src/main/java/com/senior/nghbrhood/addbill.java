@@ -32,17 +32,38 @@ import java.util.Calendar;
 public class addbill extends AppCompatActivity implements View.OnClickListener{
 
     private int notificationId = 1;
+    EditText cal;
+    DatePickerDialog datePickerDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addbill);
 
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        cal = findViewById(R.id.editText3);
 
-        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        cal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
+                final int year = calendar.get(Calendar.YEAR);
+                final int month = calendar.get(Calendar.MONTH);
+                final int day = calendar.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog = new DatePickerDialog(addbill.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        cal.setText(day + " - " + (month + 1) + " - " + year);
+                    }
+                },year, month, day);
+                datePickerDialog.show();
+            }
+        });
 
-        //getSupportActionBar().hide();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        getSupportActionBar().hide();
 
         findViewById(R.id.setBtn).setOnClickListener(this);
         findViewById(R.id.cancelBtn).setOnClickListener(this);
@@ -52,11 +73,14 @@ public class addbill extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View view) {
         EditText editText = findViewById(R.id.editText);
         TimePicker timePicker = findViewById(R.id.timePicker);
+        EditText editText2 = findViewById(R.id.editText2);
+        String mes = "Reminder - " + editText2.getText().toString();
 
         // Intent
         Intent intent = new Intent(addbill.this, AlarmReceiver.class);
         intent.putExtra("notificationId", notificationId);
         intent.putExtra("message", editText.getText().toString());
+        intent.putExtra("title", mes);
 
         // PendingIntent
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
@@ -80,12 +104,14 @@ public class addbill extends AppCompatActivity implements View.OnClickListener{
 
                 // Set Alarm
                 alarmManager.set(AlarmManager.RTC_WAKEUP, alarmStartTime, pendingIntent);
-                Toast.makeText(this, "Done!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Reminder Added", Toast.LENGTH_SHORT).show();
+                finish();
                 break;
 
             case R.id.cancelBtn:
-                alarmManager.cancel(pendingIntent);
-                Toast.makeText(this, "Canceled.", Toast.LENGTH_SHORT).show();
+                /*alarmManager.cancel(pendingIntent);
+                Toast.makeText(this, "Canceled", Toast.LENGTH_SHORT).show();*/
+                finish();
                 break;
         }
     }
