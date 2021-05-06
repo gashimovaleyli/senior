@@ -6,12 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".ListShops">
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
-        android:layout_width="414dp"
-        android:layout_height="534dp"
-        android:layout_marginTop="16dp"
+    <Button
+        android:id="@+id/loginBtn4"
+        android:layout_width="500dp"
+        android:layout_height="48dp"
+        android:background="@drawable/custom_input"
+        android:drawablePadding="12dp"
+        android:onClick="onClick"
+        android:outlineAmbientShadowColor="@color/black"
+        android:shadowColor="@color/black"
+        android:text="Go to Chat"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <WebView
+        android:id="@+id/webviewBills2"
+        android:layout_width="match_parent"
+        android:layout_height="684dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

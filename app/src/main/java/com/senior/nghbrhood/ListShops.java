@@ -6,9 +6,14 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class ListShops extends AppCompatActivity {
+
+    private WebView mywebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +29,37 @@ public class ListShops extends AppCompatActivity {
         //hide the title bar
         getSupportActionBar().hide();
 
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("geo:39.87484109035379, 32.74755329121748"));
-        Intent chooser = Intent.createChooser(intent, "Launch");
-        startActivity(chooser);
+        mywebView=(WebView) findViewById(R.id.webviewBills2);
+        mywebView.setWebViewClient(new ListShops.load());
+        mywebView.getSettings().setJavaScriptEnabled(true);
+        mywebView.loadUrl("https://www.google.com/maps/search/Marketler/@39.8668454,32.744345,15z/data=!3m1!4b1?hl=en");
+    }
+
+    public class load extends WebViewClient {
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view,String url){
+            view.loadUrl(url);
+            return true;
+        }
+    }
+    @Override
+    public void onBackPressed(){
+        if(mywebView.canGoBack()) {
+            mywebView.goBack();
+        }
+        else{
+            super.onBackPressed();
+        }
+    }
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.loginBtn4:
+                Intent intent2 = new Intent(getApplicationContext(), chat.class);
+                startActivity(intent2);
+                finish();
+                break;
+        }
     }
 }

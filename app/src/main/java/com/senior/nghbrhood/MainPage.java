@@ -43,12 +43,8 @@ public class MainPage extends AppCompatActivity implements androidx.appcompat.wi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.listShopsBtn:
-                /*Intent intent = new Intent(getApplicationContext(), ListShops.class);
-                startActivity(intent);*/
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("geo:39.87263307717906, 32.751072926441346"));
-                Intent chooser = Intent.createChooser(intent, "Launch");
-                startActivity(chooser);
+                Intent intent = new Intent(getApplicationContext(), ListShops.class);
+                startActivity(intent);
                 break;
             case R.id.chatBtn:
                 Intent intent2 = new Intent(getApplicationContext(), chat.class);
