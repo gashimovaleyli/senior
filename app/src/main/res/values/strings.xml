@@ -15,7 +15,6 @@
     <string-array name="registerSpin">
         <item>Resident</item>
         <item>Apartment Manager</item>
-        <item>Shop</item>
     </string-array>
     <string name="title_activity_addbill">addbill</string>
 

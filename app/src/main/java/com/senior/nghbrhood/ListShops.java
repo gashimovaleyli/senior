@@ -32,7 +32,7 @@ public class ListShops extends AppCompatActivity {
         mywebView=(WebView) findViewById(R.id.webviewBills2);
         mywebView.setWebViewClient(new ListShops.load());
         mywebView.getSettings().setJavaScriptEnabled(true);
-        mywebView.loadUrl("https://www.google.com/maps/search/Marketler/@39.8668454,32.744345,15z/data=!3m1!4b1?hl=en");
+        mywebView.loadUrl("https://www.google.com/maps/search/Markets/@39.8668454,32.744345,15z/data=!3m1!4b1?hl=en");
     }
 
     public class load extends WebViewClient {
